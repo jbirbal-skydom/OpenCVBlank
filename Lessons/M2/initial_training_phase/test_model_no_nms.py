@@ -1,5 +1,5 @@
 # USAGE
-# python test_model_no_nms.py --conf conf/cars.json \
+# python test_model_no_nms.py --conf conf/cars.json /
 #	--image datasets/caltech101/101_ObjectCategories/car_side/image_0035.jpg
 
 # import the necessary packages
@@ -11,14 +11,15 @@ import argparse
 import pickle
 import cv2
 
-# construct the argument parser and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-c", "--conf", required=True, help="path to the configuration file")
-ap.add_argument("-i", "--image", required=True, help="path to the image to be classified")
-args = vars(ap.parse_args())
+# # construct the argument parser and parse the arguments
+# ap = argparse.ArgumentParser()
+# ap.add_argument("-c", "--conf", required=True, help="path to the configuration file")
+# ap.add_argument("-i", "--image", required=True, help="path to the image to be classified")
+# args = vars(ap.parse_args())
 
 # load the configuration file
-conf = Conf(args["conf"])
+conf = Conf("OpenCVBlank/Lessons/M2/Settings/conf/cars.json")
+imageF = "OpenCVBlank/Lessons/M2/Settings/datasets/caltech101/101_ObjectCategories/car_side/image_0035.jpg"
 
 # load the classifier, then initialize the Histogram of Oriented Gradients descriptor
 # and the object detector
@@ -28,7 +29,7 @@ hog = HOG(orientations=conf["orientations"], pixelsPerCell=tuple(conf["pixels_pe
 od = ObjectDetector(model, hog)
 
 # load the image and convert it to grayscale
-image = cv2.imread(args["image"])
+image = cv2.imread("OpenCVBlank/Lessons/M2/Settings/datasets/caltech101/101_ObjectCategories/car_side/image_0035.jpg")
 image = imutils.resize(image, width=min(260, image.shape[1]))
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 

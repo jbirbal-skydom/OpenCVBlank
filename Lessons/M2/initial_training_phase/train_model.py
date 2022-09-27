@@ -28,7 +28,7 @@ print("[INFO] loading dataset...")
 (data, labels) = dataset.load_dataset(conf["features_path"], "features")
 
 # check to see if the hard negatives flag was supplied
-if args["hard_negatives"] > 0:
+if hard_negatives > 0:
 	print("[INFO] loading hard negatives...")
 	(hardData, hardLabels) = dataset.load_dataset(conf["features_path"], "hard_negatives")
 	data = np.vstack([data, hardData])

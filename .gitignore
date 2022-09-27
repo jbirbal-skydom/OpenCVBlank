@@ -131,3 +131,5 @@ dmypy.json
 
 #training images'
 caltech101/
+datasets/
+output/

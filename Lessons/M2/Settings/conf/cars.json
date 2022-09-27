@@ -4,7 +4,7 @@
 	****/
 	"image_dataset": "OpenCVBlank/Lessons/M2/Settings/datasets/caltech101/101_ObjectCategories/car_side",
 	"image_annotations": "OpenCVBlank/Lessons/M2/Settings/datasets/caltech101/Annotations/car_side",
-	"image_distractions": "OpenCVBlank/Lessons/M2/Settings/datasets/caltech101/101_ObjectCategories/airplanes",
+	"image_distractions": "OpenCVBlank/Lessons/M2/Settings/datasets/sceneclass13",
 
 	/****
 	* FEATURE EXTRACTION

@@ -20,7 +20,7 @@ import pickle
 # args = vars(ap.parse_args())
 
 conf = Conf("OpenCVBlank/Lessons/M2/Settings/conf/cars.json")
-hard_negatives = -1
+hard_negatives = 1
 
 # load the configuration file and the initial dataset
 print("[INFO] loading dataset...")

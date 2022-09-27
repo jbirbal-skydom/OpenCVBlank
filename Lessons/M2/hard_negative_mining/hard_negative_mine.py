@@ -15,13 +15,13 @@ import pickle
 import random
 import cv2
 
-# construct the argument parser and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-c", "--conf", required=True, help="path to the configuration file")
-args = vars(ap.parse_args())
+# # construct the argument parser and parse the arguments
+# ap = argparse.ArgumentParser()
+# ap.add_argument("-c", "--conf", required=True, help="path to the configuration file")
+# args = vars(ap.parse_args())
 
 # load the configuration file and initialize the data list
-conf = Conf(args["conf"])
+conf = conf = Conf("OpenCVBlank/Lessons/M2/Settings/conf/cars.json")
 data = []
 
 # load the classifier, then initialize the Histogram of Oriented Gradients descriptor

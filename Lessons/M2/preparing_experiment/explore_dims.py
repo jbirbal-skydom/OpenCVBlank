@@ -15,7 +15,7 @@ import glob
 # args = vars(ap.parse_args())
 
 # load the configuration file and initialize the list of widths and heights
-conf = Conf("OpenCVBlank\Examples\Detector\preparing_experiment\conf\cars.json")
+conf = Conf("Lessons\M2\Settings\conf\cars.json")
 widths = []
 heights = []
 

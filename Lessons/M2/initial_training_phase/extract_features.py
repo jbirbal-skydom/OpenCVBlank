@@ -16,17 +16,17 @@ import argparse
 import random
 import cv2
 
-# # construct the argument parser and parse the command line arguments
-# ap = argparse.ArgumentParser()
-# ap.add_argument("-c", "--conf", required=True, help="path to the configuration file")
-# args = vars(ap.parse_args())
+# construct the argument parser and parse the command line arguments
+ap = argparse.ArgumentParser()
+ap.add_argument("-c", "--conf", required=True, help="path to the configuration file")
+args = vars(ap.parse_args())
 
 # load the configuration file
-conf = Conf("OpenCVBlank\Examples\Detector\preparing_experiment\conf\cars.json")
+conf = Conf(args["conf"])
 
 # initialize the HOG descriptor along with the list of data and labels
 hog = HOG(orientations=conf["orientations"], pixelsPerCell=tuple(conf["pixels_per_cell"]),
-	cellsPerBlock=tuple(conf["cells_per_block"]), normalize=conf["normalize"])
+	cellsPerBlock=tuple(conf["cells_per_block"]), normalize=conf["normalize"], block_norm="L1")
 data = []
 labels = []
 

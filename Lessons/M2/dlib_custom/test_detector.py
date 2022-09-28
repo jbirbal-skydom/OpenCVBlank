@@ -7,17 +7,21 @@ import argparse
 import dlib
 import cv2
 
-# construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--detector", required=True, help="Path to trained object detector")
-ap.add_argument("-t", "--testing", required=True, help="Path to directory of testing images")
-args = vars(ap.parse_args())
+# # construct the argument parse and parse the arguments
+# ap = argparse.ArgumentParser()
+# ap.add_argument("-d", "--detector", required=True, help="Path to trained object detector")
+# ap.add_argument("-t", "--testing", required=True, help="Path to directory of testing images")
+# args = vars(ap.parse_args())
+
+# static file 
+testing= "OpenCVBlank/Lessons/M2/Settings/datasets/face_detector/testing"
+detector = "OpenCVBlank/Lessons/M2/Settings/datasets/face_detector/detector.svm"
 
 # load the detector
-detector = dlib.simple_object_detector(args["detector"])
+detector = dlib.simple_object_detector(detector)
 
 # loop over the testing images
-for testingPath in paths.list_images(args["testing"]):
+for testingPath in paths.list_images(testing):
 	# load the image and make predictions
 	image = cv2.imread(testingPath)
 	boxes = detector(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))

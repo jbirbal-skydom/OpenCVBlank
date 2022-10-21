@@ -133,3 +133,7 @@ dmypy.json
 caltech101/
 datasets/
 output/
+*.png
+*.jpg
+*.jpeg
+

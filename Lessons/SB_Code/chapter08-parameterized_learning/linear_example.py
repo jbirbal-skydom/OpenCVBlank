@@ -19,7 +19,7 @@ b = np.random.randn(3)
 
 # load our example image, resize it, and then flatten it into our
 # "feature vector" representation
-orig = cv2.imread("beagle.png")
+orig = cv2.imread("OpenCVBlank/Lessons/SB_Code/chapter08-parameterized_learning/beagle.png")
 image = cv2.resize(orig, (32, 32)).flatten()
 
 # compute the output scores by taking the dot product between the

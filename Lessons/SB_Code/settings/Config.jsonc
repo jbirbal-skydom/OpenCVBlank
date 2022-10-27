@@ -4,6 +4,7 @@
 	****/
 	"animals_dataset": "OpenCVBlank/Lessons/SB_Code/datasets/animals",
     "smiles_dataset": "OpenCVBlank/Lessons/SB_Code/datasets/SMILEsmileD",
+	"dataset": "OpenCVBlank/Lessons/SB_Code/datasets/animals",
 
 
 	/****
@@ -12,6 +13,16 @@
 	
 	"neighbors": 1,
 	"jobs": 2,
+
+
+		/****
+	* BASIC GRADIENT DESCENT 
+	****/
+
+	"epochs": 100,  //default=100,
+	"alpha":0.01, //default=0.01,
+	"batch_size": 32, //default=32
+
 
 
 	/****

@@ -9,12 +9,12 @@ from pyimagesearch.preprocessing import SimplePreprocessor
 from pyimagesearch.datasets import SimpleDatasetLoader
 from imutils import paths
 import argparse
-
+from pyimagesearch.utils import Conf
 # construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--dataset", required=True,
-	help="path to input dataset")
-args = vars(ap.parse_args())
+# ap = argparse.ArgumentParser()
+# ap.add_argument("-d", "--dataset", required=True,
+# 	help="path to input dataset")
+args = Conf("OpenCVBlank\Lessons\SB_Code\settings\Config.jsonc") #vars(ap.parse_args())
 
 # grab the list of images paths
 print("[INFO] loading images...")
@@ -41,8 +41,8 @@ for r in (None, "l1", "l2"):
 	# train a SGD classifier using a softmax loss function and the
 	# specified regularization function for 10 epochs
 	print("[INFO] training model with `{}` penalty".format(r))
-	model = SGDClassifier(loss="log", penalty=r, max_iter=10,
-		learning_rate="constant", tol=1e-3, eta0=0.01, random_state=12)
+	model = SGDClassifier(loss="log_loss", penalty=r, max_iter=10,
+		learning_rate="constant", tol=1e-1, eta0=0.01, random_state=12)
 	model.fit(trainX, trainY)
 
 	# evaluate the classifier

@@ -8,7 +8,8 @@ from sklearn.datasets import make_blobs
 import matplotlib.pyplot as plt
 import numpy as np
 import argparse
-
+from pyimagesearch.utils import Conf
+import pandas as pd
 def sigmoid_activation(x):
 	# compute the sigmoid activation value for a given input
 	return 1.0 / (1 + np.exp(-x))
@@ -32,12 +33,16 @@ def predict(X, W):
 	return preds
 
 # construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-e", "--epochs", type=float, default=100,
-	help="# of epochs")
-ap.add_argument("-a", "--alpha", type=float, default=0.01,
-	help="learning rate")
-args = vars(ap.parse_args())
+# ap = argparse.ArgumentParser()
+# ap.add_argument("-e", "--epochs", type=float, default=100,
+# 	help="# of epochs")
+# ap.add_argument("-a", "--alpha", type=float, default=0.01,
+# 	help="learning rate")
+# args = vars(ap.parse_args())
+
+#Config file
+args = Conf("OpenCVBlank\Lessons\SB_Code\settings\Config.jsonc")
+
 
 # generate a 2-class classification problem with 1,000 data points,
 # where each data point is a 2D feature vector
@@ -66,19 +71,21 @@ for epoch in np.arange(0, args["epochs"]):
 	# matrix `W`, then pass this value through our sigmoid activation
 	# function, thereby giving us our predictions on the dataset
 	preds = sigmoid_activation(trainX.dot(W))
+	
 
 	# now that we have our predictions, we need to determine the
 	# `error`, which is the difference between our predictions and
 	# the true values
 	error = preds - trainY
-	loss = np.sum(error ** 2)
+	loss = np.sum(error ** 2) #R2
 	losses.append(loss)
 
 	# the gradient descent update is the dot product between our
 	# (1) features and (2) the error of the sigmoid derivative of
 	# our predictions
-	d = error * sigmoid_deriv(preds)
+	d = error * sigmoid_deriv(preds) 
 	gradient = trainX.T.dot(d)
+	print (pd.DataFrame(np.c_[W,gradient]))
 
 	# in the update stage, all we need to do is "nudge" the weight
 	# matrix in the negative direction of the gradient (hence the
@@ -92,10 +99,11 @@ for epoch in np.arange(0, args["epochs"]):
 			loss))
 
 # evaluate our model
+
 print("[INFO] evaluating...")
 preds = predict(testX, W)
 print(classification_report(testY, preds))
-
+preds_list = preds
 # plot the (testing) classification data
 plt.style.use("ggplot")
 plt.figure()
@@ -109,4 +117,14 @@ plt.plot(np.arange(0, args["epochs"]), losses)
 plt.title("Training Loss")
 plt.xlabel("Epoch #")
 plt.ylabel("Loss")
+
+
+# construct a figure that plots the loss over time
+plt.style.use("ggplot")
+plt.figure()
+plt.plot(np.arange(0, 500), testY[:, 0])
+plt.title("Prediction")
+plt.xlabel("Epoch #")
+plt.ylabel("Prediction")
+
 plt.show()

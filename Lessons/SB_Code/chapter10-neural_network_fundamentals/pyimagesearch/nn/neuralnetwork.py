@@ -1,5 +1,6 @@
 # import the necessary packages
 import numpy as np
+import pandas as pd
 
 class NeuralNetwork:
 	def __init__(self, layers, alpha=0.1):
@@ -16,12 +17,16 @@ class NeuralNetwork:
 			# number of nodes in each respective layer together,
 			# adding an extra node for the bias
 			w = np.random.randn(layers[i] + 1, layers[i + 1] + 1)
+			print('The lists are:', i,' : ',*w , sep='\n')
 			self.W.append(w / np.sqrt(layers[i]))
+			
 
 		# the last two layers are a special case where the input
 		# connections need a bias term but the output does not
 		w = np.random.randn(layers[-2] + 1, layers[-1])
 		self.W.append(w / np.sqrt(layers[-2]))
+		print('The lists are:', *self.W, sep='\n')
+
 
 	def __repr__(self):
 		# construct and return a string that represents the network

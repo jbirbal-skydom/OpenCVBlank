@@ -23,6 +23,10 @@
 	"alpha":0.01, //default=0.01,
 	"batch_size": 32, //default=32
 
+	/***Tensorflow
+	***/
+	"output": "OpenCVBlank/Lessons/SB_Code/chapter10-neural_network_fundamentals/output/keras_mnist.png",
+
 
 
 	/****

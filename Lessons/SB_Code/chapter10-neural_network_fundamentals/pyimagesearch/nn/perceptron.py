@@ -6,6 +6,7 @@ class Perceptron:
 		# initialize the weight matrix and store the learning rate
 		self.W = np.random.randn(N + 1) / np.sqrt(N)
 		self.alpha = alpha
+		print("start", self.W)
 
 	def step(self, x):
 		# apply the step function
@@ -16,6 +17,7 @@ class Perceptron:
 		# matrix -- this little trick allows us to treat the bias
 		# as a trainable parameter within the weight matrix
 		X = np.c_[X, np.ones((X.shape[0]))]
+		print(X.shape, self.W.shape)
 
 		# loop over the desired number of epochs
 		for epoch in np.arange(0, epochs):
